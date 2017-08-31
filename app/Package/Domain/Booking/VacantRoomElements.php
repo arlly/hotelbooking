@@ -9,6 +9,8 @@ class VacantRoomElements implements EntityInterface
     protected $id;
 
     protected $roomNumber;
+    
+    protected $roomType;
 
     public function __construct()
     {
@@ -35,5 +37,16 @@ class VacantRoomElements implements EntityInterface
     public function getId()
     {
         return $this->roomNumber;
+    }
+    
+    public function setRoomType($value)
+    {
+        $this->roomType = $value;
+        return $this;
+    }
+    
+    public function getRoomType()
+    {
+        return $this->roomType;
     }
 }
