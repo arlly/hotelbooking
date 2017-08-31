@@ -5,6 +5,10 @@ use App\Package\Domain\Room\RoomRepositoryInterface;
 use App\Package\Infrastructure\Eloquents\EloquentRoom;
 use App\Package\Domain\Room\RoomNumber;
 use App\Package\Domain\Room\Room;
+use App\Package\Domain\Room\Floor;
+use App\Package\Domain\Room\Charge;
+use App\Package\Domain\Room\DoubleRoom;
+use App\Package\Domain\Room\SingleRoom;
 
 class RoomRepository implements RoomRepositoryInterface
 {
@@ -18,7 +22,17 @@ class RoomRepository implements RoomRepositoryInterface
 
     public function getRoom(RoomNumber $number): Room
     {
+        $row = $this->eloquent->where('room_number', $number);
         
+        if ($row->type  == 'single') { 
+           $Room = new SingleRoom(); 
+        } else {
+            $Room = new DoubleRoom();
+        }
+        
+        return $Room->setFloor(new Floor($Room->floor))
+                    ->setCharge(new Charge($Room->charge))
+                    ->setRoomNumber(new RoomNumber($Room->room_number));
     }
     
     
