@@ -30,9 +30,9 @@ class RoomRepository implements RoomRepositoryInterface
             $Room = new DoubleRoom();
         }
         
-        return $Room->setFloor(new Floor($Room->floor))
-                    ->setCharge(new Charge($Room->charge))
-                    ->setRoomNumber(new RoomNumber($Room->room_number));
+        return $Room->setFloor(new Floor($row->floor))
+                    ->setCharge(new Charge($row->charge))
+                    ->setRoomNumber(new RoomNumber($row->room_number));
     }
     
     
