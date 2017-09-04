@@ -34,7 +34,7 @@ class VacantRoomElements implements EntityInterface
         return $this;
     }
 
-    public function getId()
+    public function getRoomNumber()
     {
         return $this->roomNumber;
     }

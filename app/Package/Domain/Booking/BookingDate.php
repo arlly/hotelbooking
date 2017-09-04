@@ -8,7 +8,7 @@ class BookingDate
 
     public function __construct($value)
     {
-        if (! strptime($date, '%Y-%m-%d')) {
+        if (! strptime($value, '%Y-%m-%d')) {
             throw new \Exception('exception!');
         }
 

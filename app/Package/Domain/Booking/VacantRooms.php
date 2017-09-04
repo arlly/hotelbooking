@@ -2,6 +2,7 @@
 namespace App\Package\Domain\Booking;
 
 use App\Package\Domain\Models\Entity\EntityCollectionInterface;
+use App\Package\Domain\Models\Entity\EntityInterface;
 
 class VacantRooms implements EntityCollectionInterface
 {
