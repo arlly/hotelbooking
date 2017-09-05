@@ -8,10 +8,10 @@ class RoomNumber
 
     public function __construct(int $value)
     {
-        if ($value < 1) {
+        if ($value < 101 || $value > 403) {
             throw new \Exception('exception!');
         }
-        
+
         $this->value = $value;
     }
 
