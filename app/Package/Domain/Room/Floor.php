@@ -8,7 +8,7 @@ class Floor
 
     public function __construct(int $value)
     {
-        if ($value < 1 && $value > 4) {
+        if ($value < 101 && $value > 403) {
             throw new \Exception('exception!');
         }
         
