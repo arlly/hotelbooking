@@ -15,6 +15,8 @@ Route::get('/', function () {
 });
 
 Route::get('/roomlist/{date}', 'RoomListController@index')->name('roomlist.index');
+Route::get('/bookingSingle/{date}', 'RoomListController@bookingSingleRoom')->name('roomlist.bookingSingle');
+Route::get('/bookingDouble/{date}', 'RoomListController@bookingDoubleRoom')->name('roomlist.bookingDouble');
     
     
 Route::get('/testMail', 'MailController@sendTestEmail')->name('testMail.index');

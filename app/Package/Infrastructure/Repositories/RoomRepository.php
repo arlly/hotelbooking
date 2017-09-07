@@ -22,7 +22,7 @@ class RoomRepository implements RoomRepositoryInterface
 
     public function getRoom(RoomNumber $number): Room
     {
-        $row = $this->eloquent->where('room_number', $number);
+        $row = $this->eloquent->where('room_number', $number->getRoomNumber())->first();
         
         if ($row->type  == 'single') { 
            $Room = new SingleRoom(); 
