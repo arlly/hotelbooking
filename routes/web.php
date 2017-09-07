@@ -14,6 +14,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/roomlist/{date}', 'RoomListController@index')->name('roomlist.index');
+    
+    
 Route::get('/testMail', 'MailController@sendTestEmail')->name('testMail.index');
 
