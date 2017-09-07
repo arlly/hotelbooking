@@ -39,7 +39,7 @@
 							<td class="text-center">{{ count($VacantRoom->getDoubleRoomList()) }}</td>
 							<td class="text-center">
 							@if (count($VacantRoom->getDoubleRoomList()) > 0)
-							予約する
+							    <a href="{{ route('roomlist.bookingDouble', request()->date) }}">予約する</a>
 							@endif
 							</td>
 						</tr>
@@ -49,7 +49,7 @@
 							<td class="text-center">{{ count($VacantRoom->getSingleRoomList()) }}</td>
 							<td class="text-center">
 							@if (count($VacantRoom->getSingleRoomList()) > 0)
-							予約する
+							    <a href="{{ route('roomlist.bookingSingle', request()->date) }}">予約する</a>
 							@endif
 							</td>
 						</tr>
