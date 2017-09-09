@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Package\Application\UseCases\Customer\GetVacantRoomList;
 use App\Package\Domain\Booking\BookingDate;
-use App\Package\Domain\Room\RoomRepositoryInterface;
 use App\Package\Application\UseCases\Customer\BookingRegistRoomFactory;
 
 class RoomListController extends Controller
@@ -12,12 +11,9 @@ class RoomListController extends Controller
     //
     protected $factory;
 
-    protected $roomRepo;
-
-    public function __construct(BookingRegistRoomFactory $factory, RoomRepositoryInterface $roomRepo)
+    public function __construct(BookingRegistRoomFactory $factory)
     {
         $this->factory = $factory;
-        $this->roomRepo = $roomRepo;
     }
 
     public function index($date, GetVacantRoomList $usecase)
@@ -39,9 +35,7 @@ class RoomListController extends Controller
         }
         
         $usecase = $this->factory->factory('single');
-        $RoomNumber = $usecase->getBookingRoomNumber($vacantRoom);
-        
-        $Room = $this->roomRepo->getRoom($RoomNumber);
+        $Room = $usecase->getBookingRoom($vacantRoom);
         $BookingRegistRoomNumber = $usecase->bookingRegistRoom($Date, $Room);
         
         return view('room.bookingRegist', [
@@ -60,9 +54,7 @@ class RoomListController extends Controller
         }
         
         $usecase = $this->factory->factory('double');
-        $RoomNumber = $usecase->getBookingRoomNumber($vacantRoom);
-        
-        $Room = $this->roomRepo->getRoom($RoomNumber);
+        $Room = $usecase->getBookingRoom($vacantRoom);
         $BookingRegistRoomNumber = $usecase->bookingRegistRoom($Date, $Room);
         
         return view('room.bookingRegist', [

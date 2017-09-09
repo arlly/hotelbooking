@@ -12,7 +12,7 @@ interface BookingRegistRoomInterface
     /**
      * 予約可能な部屋のナンバーを取得する
      */
-    public function getBookingRoomNumber(EntityCollectionInterface $collection): RoomNumber;
+    public function getBookingRoom(EntityCollectionInterface $collection): Room;
 
     /**
      * 実際に予約して部屋のIDを返す
